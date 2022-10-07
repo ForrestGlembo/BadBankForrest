@@ -36,16 +36,17 @@ function DepositForm(props){
     fetch(`http://localhost:3000/account/update/${email}/${amount}`)
     .then(response => response.text())
     .then(text => {
-        try {
-            const data = JSON.parse(text);
-            props.setStatus(JSON.stringify(data.value));
-       //     props.setStatus(JSON.stringify(data.value.balance));
-            props.setShow(false);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus('Deposit failed')
-            console.log('err:', text);
-        }
+
+      const data = JSON.parse(text);
+
+      if (data.success) {
+        props.setStatus(JSON.stringify(data.value));
+        props.setShow(false);
+        console.log('JSON:', data);
+      } else {
+        props.setStatus('Deposit failed')
+        console.log('err:', text);
+      }
     });
   }
 
