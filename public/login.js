@@ -47,9 +47,6 @@ function LoginForm(props){
     appId: "1:422911146503:web:eba074b2d6795353e948a2",
   
     measurementId: "G-BBX5P65GC8"
-  
-
-
 
   };
 

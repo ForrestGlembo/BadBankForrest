@@ -63,7 +63,7 @@ function CreateForm(props){
 
   function handle(){
     console.log(name,email,password);
-    const url = `/account/create/${name}/${email}/${password}`;
+    const url = `http://localhost:3000/account/create/${name}/${email}/${password}`;
     (async () => {
         var res  = await fetch(url);
         var data = await res.json();    
@@ -73,7 +73,7 @@ function CreateForm(props){
         const auth = firebase.auth();
         const promise = auth.createUserWithEmailAndPassword(email, password);
         promise.catch(e => {
-       
+            console.log(e);
            props.setStatus('Create Failure!')
        
          })
