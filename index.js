@@ -83,8 +83,14 @@ app.get('/account/update/:email/:amount', function (req, res) {
 
     dal.update(req.params.email, amount).
         then((response) => {
-            console.log(response);
-            res.send(response);
+            console.log(response)
+            response.success = true;
+            if (response.value !== null) {
+                res.send(response);
+            } else {
+                response.success = false;
+                res.send(response);
+            }
     });    
 });
 

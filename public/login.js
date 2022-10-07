@@ -1,6 +1,7 @@
 function Login(){
   const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');    
+  const [status, setStatus] = React.useState('');
+  const [success, setSuccess] = React.useState(true);    
 
   return (
     <Card
@@ -8,15 +9,21 @@ function Login(){
       header="Login"
       status={status}
       body={show ? 
-        <LoginForm setShow={setShow} setStatus={setStatus}/> :
-        <LoginMsg setShow={setShow} setStatus={setStatus}/>}
+        <LoginForm setShow={setShow} setStatus={setStatus} setSuccess={setSuccess}/> :
+        <LoginMsg setShow={setShow} success={success}/>}
     />
   ) 
 }
 
 function LoginMsg(props){
   return(<>
-    <h5>Success</h5>
+    {
+      props.success 
+        ?
+        <h5>Success</h5>
+        :
+        <h5>Login Failure</h5>
+    }
     <button type="submit" 
       className="btn btn-light" 
       onClick={() => props.setShow(true)}>
@@ -63,6 +70,7 @@ function LoginForm(props){
     props.setShow(false);
 
     promise.catch(e => {
+      props.setSuccess(false);
       props.setStatus('Login Failure!')
     });
   }
