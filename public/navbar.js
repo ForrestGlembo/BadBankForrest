@@ -25,6 +25,9 @@ function NavBar(){
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#/alldata/">AllData</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#/logout/">Log Out</a>
           </li>          
         </ul>
       </div>

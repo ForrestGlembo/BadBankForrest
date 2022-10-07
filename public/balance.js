@@ -34,7 +34,7 @@ function BalanceForm(props){
   const [balance, setBalance] = React.useState('');  
 
   function handle(){
-    fetch(`/account/findOne/${email}`)
+    fetch(`http://localhost:3000/account/findOne/${email}`)
     .then(response => response.text())
     .then(text => {
         try {

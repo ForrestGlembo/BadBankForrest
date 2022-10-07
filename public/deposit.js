@@ -33,7 +33,7 @@ function DepositForm(props){
   const [amount, setAmount] = React.useState('');
 
   function handle(){
-    fetch(`/account/update/${email}/${amount}`)
+    fetch(`http://localhost:3000/account/update/${email}/${amount}`)
     .then(response => response.text())
     .then(text => {
         try {
